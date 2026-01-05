@@ -126,3 +126,12 @@ seatlock/
 - **CyberShield SOC**: Modern Security Operations Center platform (Angular).
 - **AI Sovereign Nexus**: Advanced AI autonomy system.
 - **SeatLock**: High-performance concurrency engine (Current).
+
+### 📊 My Digital Footprint
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Raphasha27&show_icons=true&theme=tokyonight&count_private=true" alt="Raphasha27's GitHub Stats" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Raphasha27&layout=compact&theme=tokyonight" alt="Raphasha27's Top Languages" />
+</p>
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Raphasha27&theme=tokyonight" alt="Raphasha27's Streak" />
+</p>
