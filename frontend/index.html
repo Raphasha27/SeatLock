@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeatLock - Real-Time Seat Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <span class="icon">🎫</span>
+                    SeatLock
+                </h1>
+                <p class="subtitle">High-Performance Seat Reservation Engine</p>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="available-count">0</div>
+                    <div class="stat-label">Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="held-count">0</div>
+                    <div class="stat-label">Held</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="sold-count">0</div>
+                    <div class="stat-label">Sold</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="control-panel">
+                <div class="user-input">
+                    <label for="user-id">Your User ID:</label>
+                    <input type="number" id="user-id" value="1" min="1" max="999">
+                </div>
+                <button class="btn btn-refresh" onclick="loadSeats()">
+                    🔄 Refresh
+                </button>
+            </div>
+
+            <div class="screen-indicator">
+                <div class="screen">🎬 SCREEN</div>
+            </div>
+
+            <div class="seats-grid" id="seats-grid">
+                <!-- Seats will be dynamically generated here -->
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="seat-demo available"></div>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="seat-demo held"></div>
+                    <span>Your Hold</span>
+                </div>
+                <div class="legend-item">
+                    <div class="seat-demo held-other"></div>
+                    <span>Held by Others</span>
+                </div>
+                <div class="legend-item">
+                    <div class="seat-demo sold"></div>
+                    <span>Sold</span>
+                </div>
+            </div>
+        </main>
+
+        <div class="toast" id="toast"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

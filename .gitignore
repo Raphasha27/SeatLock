@@ -1,0 +1,53 @@
+# Build artifacts
+build/
+*.exe
+*.obj
+*.o
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+*.pdb
+*.ilk
+*.exp
+*.log
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# IDE
+.vscode/
+.vs/
+*.user
+*.suo
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs
+*.txt
+!requirements.txt
+!CMakeLists.txt

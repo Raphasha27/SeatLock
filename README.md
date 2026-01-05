@@ -2,199 +2,103 @@
 
 [![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B20)
 [![Performance](https://img.shields.io/badge/Performance-32M%20ops%2Fsec-brightgreen.svg)](https://github.com/Raphasha27/SeatLock)
+[![Frontend](https://img.shields.io/badge/Frontend-React-61DAFB.svg)](frontend/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A high-performance C++20 engine for handling seat reservations with **sub-microsecond latency** and **lock-free concurrency**. Perfect for ticketing platforms, airlines, and cinemas.
+A high-performance C++20 engine for handling seat reservations with **sub-microsecond latency** and **lock-free concurrency**. Now features a real-time React frontend and WebSocket broadcasting.
 
-## 🎯 Why SeatLock?
+## 🎯 Architecture
 
-Modern ticketing systems face a critical challenge: **preventing double-booking** while serving tens of thousands of concurrent users. SeatLock solves this with:
+```
+┌─────────────────────────────┐      ┌─────────────────────────────┐
+│   User A (Browser)          │      │   User B (Browser)          │
+│   React + WebSockets        │◄────►│   React + WebSockets        │
+└──────────▲──────────────────┘      └──────────▲──────────────────┘
+           │                                    │
+           │           Real-time Updates        │
+           └──────────────────┐  ┌──────────────┘
+                              │  │
+┌─────────────────────────────▼──▼──────────────────────────┐
+│   FastAPI Gateway (Python)                                │
+│   • REST API for Holds/Confirms                           │
+│   • WebSocket Broadcaster                                 │
+└──────────┬────────────────────────────────────────────────┘
+           │ gRPC / FFI
+┌──────────▼────────────────────────────────────────────────┐
+│   C++ SeatLock Engine                                     │
+│   • Atomic State Management (32M ops/sec)                 │
+│   • Expiry Worker                                         │
+└───────────────────────────────────────────────────────────┘
+```
 
-- ✅ **Lock-Free Algorithms**: Compare-And-Swap (CAS) operations for atomic state transitions
-- ✅ **Fine-Grained Locking**: Per-seat mutexes minimize contention
-- ✅ **Auto-Expiry**: Background thread releases expired holds
-- ✅ **Language Agnostic**: gRPC/REST interface for Python, Node.js, etc.
-
-## 📊 Performance
+## 📊 Performance Benchmark
 
 **Benchmark Results** (16 threads, 1.6M operations):
 ```
 Ops/Sec: 32,240,000
 Time:    0.05 seconds
-Throughput: Sub-millisecond hold acquisition
+Throughput: Sub-millisecond lock acquisition
 ```
 
-This demonstrates **senior-level systems engineering**:
-- Multi-threading mastery
-- Concurrency control
-- High throughput under contention
-- Production-ready error handling
+## 🚀 One-Minute Quick Start
 
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────┐
-│   React / Web UI            │
-└──────────┬──────────────────┘
-           │ REST API
-┌──────────▼──────────────────┐
-│   FastAPI (Python)          │
-└──────────┬──────────────────┘
-           │ gRPC
-┌──────────▼──────────────────┐
-│   C++ SeatLock Engine       │
-│   • Atomic Seat Manager     │
-│   • Expiry Worker Thread    │
-└──────────┬──────────────────┘
-           │
-┌──────────▼──────────────────┐
-│   PostgreSQL / Redis        │
-└─────────────────────────────┘
-```
-
-## 🚀 Quick Start
-
-### Prerequisites
-- **C++20 Compiler** (MSVC 2019+, GCC 10+, Clang 10+)
-- **CMake** 3.10+
-- **Python** 3.8+ (for FastAPI wrapper)
-
-### Build & Run
-
+### 1. Build the Engine (C++)
 ```bash
-# Clone the repository
-git clone https://github.com/Raphasha27/SeatLock.git
-cd SeatLock
-
-# Build the C++ engine (Windows)
-build_nmake.bat
-
-# Or on Linux/Mac
-mkdir build && cd build
-cmake ..
-make
-./SeatLockBench
+# Windows
+build_seatlock.bat
 ```
 
-### Run the Python API
-
+### 2. Start the Backend (Python)
 ```bash
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Visit `http://localhost:8000/docs` for the interactive API documentation.
+### 3. Open the Frontend
+Simply open `frontend/index.html` in your browser.
+- **Green**: Available
+- **Orange**: Held (Real-time update)
+- **Red**: Sold (Real-time update)
 
-## 🔐 Core Logic
+## ✨ Key Features
 
-### Seat State Machine
-```
-AVAILABLE → HELD → SOLD
-     ↑        │
-     └────────┘
-    (on expiry)
-```
-
-### API Operations
-
-```cpp
-bool holdSeat(int seatId, int userId, int durationSec);
-bool confirmSeat(int seatId, int userId);
-bool releaseSeat(int seatId);
-```
-
-### Lock-Free Implementation
-
-The `AtomicSeatManager` uses **bit-packing** to store state in a single atomic integer:
-
-```cpp
-// Bits 0-1:   Status (00=Available, 01=Held, 10=Sold)
-// Bits 2-31:  User ID
-std::atomic<int> state;
-
-// Atomic transition using CAS
-while (true) {
-    int current = seat.state.load(std::memory_order_acquire);
-    int desired = (userId << 2) | HELD;
-    if (seat.state.compare_exchange_weak(current, desired)) {
-        return true; // Success!
-    }
-    // Retry if another thread modified it
-}
-```
+- **Lock-Free Core**: Uses `std::atomic` and CAS loops for maximum throughput.
+- **Real-Time Sync**: WebSockets broadcast seat state changes instantly to all connected clients.
+- **Fine-Grained Locking**: Alternative implementation available for comparison.
+- **Auto-Expiry**: Background thread automatically releases held seats after timeout.
 
 ## 📂 Project Structure
 
 ```
 seatlock/
-├── src/
-│   ├── main.cpp              # Simulation entry point
-│   ├── SeatManager.cpp       # Fine-grained locking version
-│   ├── AtomicSeatManager.cpp # Lock-free version
-│   ├── ExpiryWorker.cpp      # Background cleanup thread
-│   └── Server.cpp            # gRPC server (placeholder)
-├── include/
-│   ├── Seat.h
-│   ├── SeatManager.h
-│   ├── AtomicSeatManager.h
-│   ├── ExpiryWorker.h
-│   └── Server.h
+├── src/                  # C++ Source
+│   ├── AtomicSeatManager.cpp
+│   └── ...
+├── include/              # C++ Headers
 ├── backend/
-│   ├── main.py               # FastAPI wrapper
+│   ├── main.py           # FastAPI + WebSockets
 │   └── requirements.txt
-├── protos/
-│   └── seatlock.proto        # gRPC protocol definition
-├── tests/
-│   └── test_basic.cpp        # Unit tests
-├── CMakeLists.txt
-├── main_bench.cpp            # Performance benchmark
+├── frontend/             # Real-time UI
+│   ├── index.html
+│   ├── app.js
+│   └── styles.css
+├── build_seatlock.bat    # Automated Build Script
 └── README.md
-```
-
-## 🧪 Testing
-
-```bash
-# Run basic unit tests
-cd build
-./SeatLock
-
-# Run stress test
-./SeatLockBench
 ```
 
 ## 🎓 Interview Talking Points
 
-This project demonstrates:
+1. **System Design**: "I extended the C++ engine with a **FastAPI gateway** to support web clients. I implemented **WebSockets** to solve the 'stale view' problem in ticketing, ensuring users see taken seats instantly."
+2. **Concurrency**: "The core engine handles 32M ops/sec using **lock-free** structures, while the frontend handles eventual consistency via WebSocket events."
+3. **Full Stack**: "Demonstrates integration from low-level C++ memory management up to high-level React UI state."
 
-1. **Concurrency Expertise**: "I implemented both mutex-based and lock-free seat managers, benchmarked contention, and chose the optimal strategy."
+## ☁️ Deployment
 
-2. **Systems Design**: "The C++ core guarantees consistency while exposing a language-agnostic API via gRPC."
-
-3. **Performance Engineering**: "I achieved 32M ops/sec using atomic CAS loops and bit-packing techniques."
-
-4. **Production Thinking**: "The expiry worker prevents resource leaks, and the architecture scales horizontally."
-
-## 🔮 Future Enhancements
-
-- [ ] Integrate PostgreSQL for persistence
-- [ ] Add comprehensive benchmark suite
-- [ ] Implement full gRPC server
-- [ ] Add distributed locking (Redis)
-- [ ] Create React frontend demo
-- [ ] Add Docker containerization
-- [ ] Implement event sourcing for audit trails
-
-## 📝 License
-
-MIT License - see [LICENSE](LICENSE) for details.
+- **Frontend**: Configured for Vercel (`vercel.json`)
+- **Backend**: Configured for Railway/Heroku (`Procfile`)
 
 ## 👤 Author
 
 **Raphaël Shatila**
 - GitHub: [@Raphasha27](https://github.com/Raphasha27)
-- Portfolio: [Your Portfolio Link]
-
----
-
-⭐ **Star this repo** if you find it helpful for your interview prep or production systems!

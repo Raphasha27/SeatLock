@@ -2,3 +2,4 @@ fastapi
 uvicorn
 grpcio
 grpcio-tools
+websockets
