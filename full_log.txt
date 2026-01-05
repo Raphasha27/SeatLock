@@ -1,0 +1,50 @@
+CHECKING EXTENDED TOOLLS:
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe
+CONFIGURING (NMake):
+-- The C compiler identification is MSVC 19.50.35721.0
+-- The CXX compiler identification is MSVC 19.50.35721.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe - broken
+CMake Error at C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:67 (message):
+  The C compiler
+
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: 'C:/Users/rapha/OneDrive/Desktop/SeatLock/build/CMakeFiles/CMakeScratch/TryCompile-7pph9c'
+    
+    Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_7cf7d\fast
+    	"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_7cf7d.dir\build.make /nologo -L                  CMakeFiles\cmTC_7cf7d.dir\build
+    Building C object CMakeFiles/cmTC_7cf7d.dir/testCCompiler.c.obj
+    	"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_7cf7d.dir\testCCompiler.c.obj.d --working-dir=C:\Users\rapha\OneDrive\Desktop\SeatLock\build\CMakeFiles\CMakeScratch\TryCompile-7pph9c --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~2\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\cl.exe @C:\Users\rapha\AppData\Local\Temp\nm6D06.tmp
+    testCCompiler.c
+    Linking C executable cmTC_7cf7d.exe
+    	"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\cmTC_7cf7d.dir --rc=rc --mt=CMAKE_MT-NOTFOUND --manifests -- C:\PROGRA~2\MICROS~2\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_7cf7d.dir\objects1.rsp @C:\Users\rapha\AppData\Local\Temp\nm6D84.tmp
+    Visual Studio Incremental Link with embedded manifests
+    Create CMakeFiles\cmTC_7cf7d.dir/manifest.rc
+    Create empty: CMakeFiles\cmTC_7cf7d.dir/embed.manifest
+    RC Pass 1:
+    rc /fo CMakeFiles\cmTC_7cf7d.dir/manifest.res CMakeFiles\cmTC_7cf7d.dir/manifest.rc
+    RC Pass 1: command "rc /fo CMakeFiles\cmTC_7cf7d.dir/manifest.res CMakeFiles\cmTC_7cf7d.dir/manifest.rc" failed (exit code 0) with the following output:
+    no such file or directoryNMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\cmTC_7cf7d.dir --rc=rc --mt=CMAKE_MT-NOTFOUND --manifests -- C:\PROGRA~2\MICROS~2\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_7cf7d.dir\objects1.rsp @C:\Users\rapha\AppData\Local\Temp\nm6D84.tmp' : return code '0xffffffff'
+    Stop.
+    NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_7cf7d.dir\build.make /nologo -L                  CMakeFiles\cmTC_7cf7d.dir\build' : return code '0x2'
+    Stop.
+    
+    
+
+
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+CONFIG ERROR

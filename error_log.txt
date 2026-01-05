@@ -1,0 +1,51 @@
+CHECKING TOOLS:
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\Hostx86\x86\cl.exe
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\Hostx86\x86\nmake.exe
+CONFIGURING:
+-- The C compiler identification is MSVC 19.50.35721.0
+-- The CXX compiler identification is MSVC 19.50.35721.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/cl.exe
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/cl.exe - broken
+CMake Error at C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:67 (message):
+  The C compiler
+
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/cl.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: 'C:/Users/rapha/OneDrive/Desktop/SeatLock/build/CMakeFiles/CMakeScratch/TryCompile-v3j86d'
+    
+    Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_393d9\fast
+    	"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_393d9.dir\build.make /nologo -L                  CMakeFiles\cmTC_393d9.dir\build
+    Building C object CMakeFiles/cmTC_393d9.dir/testCCompiler.c.obj
+    	"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_393d9.dir\testCCompiler.c.obj.d --working-dir=C:\Users\rapha\OneDrive\Desktop\SeatLock\build\CMakeFiles\CMakeScratch\TryCompile-v3j86d --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~2\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx86\x86\cl.exe @C:\Users\rapha\AppData\Local\Temp\nm1779.tmp
+    testCCompiler.c
+    Linking C executable cmTC_393d9.exe
+    	"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\cmTC_393d9.dir --rc=rc --mt=CMAKE_MT-NOTFOUND --manifests -- C:\PROGRA~2\MICROS~2\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_393d9.dir\objects1.rsp @C:\Users\rapha\AppData\Local\Temp\nm1816.tmp
+    Visual Studio Incremental Link with embedded manifests
+    Create CMakeFiles\cmTC_393d9.dir/manifest.rc
+    Create empty: CMakeFiles\cmTC_393d9.dir/embed.manifest
+    RC Pass 1:
+    rc /fo CMakeFiles\cmTC_393d9.dir/manifest.res CMakeFiles\cmTC_393d9.dir/manifest.rc
+    RC Pass 1: command "rc /fo CMakeFiles\cmTC_393d9.dir/manifest.res CMakeFiles\cmTC_393d9.dir/manifest.rc" failed (exit code 0) with the following output:
+    no such file or directoryNMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\cmTC_393d9.dir --rc=rc --mt=CMAKE_MT-NOTFOUND --manifests -- C:\PROGRA~2\MICROS~2\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_393d9.dir\objects1.rsp @C:\Users\rapha\AppData\Local\Temp\nm1816.tmp' : return code '0xffffffff'
+    Stop.
+    NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_393d9.dir\build.make /nologo -L                  CMakeFiles\cmTC_393d9.dir\build' : return code '0x2'
+    Stop.
+    
+    
+
+
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+CONFIG ERROR

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package seatlock;
+
+service SeatLockService {
+  rpc HoldSeat (HoldRequest) returns (HoldResponse);
+  rpc ConfirmSeat (ConfirmRequest) returns (ConfirmResponse);
+  rpc ReleaseSeat (ReleaseRequest) returns (ReleaseResponse);
+  rpc GetSeatMap (Empty) returns (SeatMapResponse);
+}
+
+message HoldRequest {
+  int32 seat_id = 1;
+  int32 user_id = 2; // Simplified for lock-free
+  int32 duration_sec = 3;
+}
+
+message HoldResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ConfirmRequest {
+  int32 seat_id = 1;
+  int32 user_id = 2;
+}
+
+message ConfirmResponse {
+  bool success = 1;
+}
+
+message ReleaseRequest {
+  int32 seat_id = 1;
+}
+
+message ReleaseResponse {
+  bool success = 1;
+}
+
+message Empty {}
+
+message SeatState {
+  int32 seat_id = 1;
+  int32 status = 2; // 0=Avail, 1=Held, 2=Sold
+  int32 user_id = 3;
+}
+
+message SeatMapResponse {
+  repeated SeatState seats = 1;
+}

@@ -1,0 +1,4 @@
+C:/Users/rapha/OneDrive/Desktop/SeatLock/build/CMakeFiles/SeatLock.dir
+C:/Users/rapha/OneDrive/Desktop/SeatLock/build/CMakeFiles/SeatLockBench.dir
+C:/Users/rapha/OneDrive/Desktop/SeatLock/build/CMakeFiles/edit_cache.dir
+C:/Users/rapha/OneDrive/Desktop/SeatLock/build/CMakeFiles/rebuild_cache.dir
