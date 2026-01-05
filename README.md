@@ -100,5 +100,5 @@ seatlock/
 
 ## 👤 Author
 
-**Raphaël Shatila**
+**Kid of Dynamic**
 - GitHub: [@Raphasha27](https://github.com/Raphasha27)
