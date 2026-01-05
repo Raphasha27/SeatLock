@@ -98,7 +98,31 @@ seatlock/
 - **Frontend**: Configured for Vercel (`vercel.json`)
 - **Backend**: Configured for Railway/Heroku (`Procfile`)
 
+## 📸 Gallery
+
+### Real-Time Frontend (React)
+![SeatLock Frontend](frontend/seatlock_frontend_preview.png)
+*Live seat updates with color-coded status (Available, Held, Sold)*
+
+### API Documentation (FastAPI/Swagger)
+![Swagger UI](frontend/seatlock_api_preview.png)
+*Interactive REST API testing interface*
+
 ## 👤 Author
 
 **Kid of Dynamic**
 - GitHub: [@Raphasha27](https://github.com/Raphasha27)
+
+### 🛠️ Tech Stack & Arsenal
+[![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
+[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+[![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CMake](https://img.shields.io/badge/CMake-%23008FBA.svg?style=for-the-badge&logo=cmake&logoColor=white)](https://cmake.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://www.microsoft.com/windows/)
+
+### 🚀 Other Major Projects
+- **CyberShield SOC**: Modern Security Operations Center platform (Angular).
+- **AI Sovereign Nexus**: Advanced AI autonomy system.
+- **SeatLock**: High-performance concurrency engine (Current).
