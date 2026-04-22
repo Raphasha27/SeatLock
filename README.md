@@ -1,4 +1,8 @@
-# SeatLock: High-Performance Real-Time Reservation Engine
+# 💺 KIROV DYNAMICS | SEATLOCK
+
+[![Kirov Dynamics](https://img.shields.io/badge/Kirov_Dynamics-AI_Reliability-002D62?style=for-the-badge&labelColor=0d1117)](https://github.com/Raphasha27)
+![Role](https://img.shields.io/badge/Role-AI_Reliability_Engineer-blue?style=for-the-badge&labelColor=0d1117)
+
 
 [![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B20)
 [![Performance](https://img.shields.io/badge/Performance-32M%20ops%2Fsec-brightgreen.svg)](https://github.com/Raphasha27/SeatLock)
