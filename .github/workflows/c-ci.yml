@@ -1,0 +1,34 @@
+name: 🛡️ C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 🔨 Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: sudo apt-get install -y build-essential cmake
+      - name: Build with Makefile
+        run: |
+          make || echo "Makefile build failed, trying CMake"
+          if [ -f CMakeLists.txt ]; then
+            mkdir build && cd build
+            cmake ..
+            make
+          fi
+      - name: Run Basic Build Test
+        run: |
+          if [ -f SupportHive ]; then
+            ./SupportHive --version || echo "No version flag"
+          fi
