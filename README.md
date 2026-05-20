@@ -1,115 +1,31 @@
-# SeatLock: High-Performance Real-Time Reservation Engine
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:00ffcc&height=200&section=header&text=SeatLock&fontSize=50&fontColor=ffffff&fontAlignY=40&desc=Private%20Startup%20Architecture&descAlignY=65" width="100%"/>
 
-[![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B20)
-[![Performance](https://img.shields.io/badge/Performance-32M%20ops%2Fsec-brightgreen.svg)](https://github.com/Raphasha27/SeatLock)
-[![Frontend](https://img.shields.io/badge/Frontend-React-61DAFB.svg)](frontend/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+  [![Status](https://img.shields.io/badge/Status-Offline%20for%20Upgrades-ff4b4b?style=for-the-badge)](#)
+  [![Visibility](https://img.shields.io/badge/Visibility-Private%20Core-8957e5?style=for-the-badge)](#)
+</div>
 
-A high-performance C++20 engine for handling seat reservations with **sub-microsecond latency** and **lock-free concurrency**. Now features a real-time React frontend and WebSocket broadcasting.
+## ?? Overview
+Welcome to the internal private repository for **SeatLock**. 
 
-## 🎯 Architecture
+> **Note on Deployment:** Any previous live deployments (e.g., Vercel, Heroku) tied to this repository have been suspended to prevent 404 billing errors. This project is currently offline while the infrastructure is migrated to our internal sovereign cloud network.
 
-```
-┌─────────────────────────────┐      ┌─────────────────────────────┐
-│   User A (Browser)          │      │   User B (Browser)          │
-│   React + WebSockets        │◄────►│   React + WebSockets        │
-└──────────▲──────────────────┘      └──────────▲──────────────────┘
-           │                                    │
-           │           Real-time Updates        │
-           └──────────────────┐  ┌──────────────┘
-                              │  │
-┌─────────────────────────────▼──▼──────────────────────────┐
-│   FastAPI Gateway (Python)                                │
-│   • REST API for Holds/Confirms                           │
-│   • WebSocket Broadcaster                                 │
-└──────────┬────────────────────────────────────────────────┘
-           │ gRPC / FFI
-┌──────────▼────────────────────────────────────────────────┐
-│   C++ SeatLock Engine                                     │
-│   • Atomic State Management (32M ops/sec)                 │
-│   • Expiry Worker                                         │
-└───────────────────────────────────────────────────────────┘
-```
+## ?? Key Architectural Features
+- **High-Performance Core:** Built for scalability and autonomous operations.
+- **Modern UI/UX:** Features advanced dashboard logic and secure routing.
+- **Sovereign Infrastructure Ready:** Refactoring for the Kirov Dynamics ecosystem.
 
-## 📊 Performance Benchmark
+## ??? Local Development Setup
+To run this project locally without relying on external cloud providers:
 
-**Benchmark Results** (16 threads, 1.6M operations):
-```
-Ops/Sec: 32,240,000
-Time:    0.05 seconds
-Throughput: Sub-millisecond lock acquisition
-```
+`ash
+git clone https://github.com/Raphasha27/SeatLock.git
+cd SeatLock
+# Install dependencies according to package manager (npm/pip/cargo)
+# Start the local development server
+`
 
-## 🚀 One-Minute Quick Start
-
-### 1. Build the Engine (C++)
-```bash
-# Windows
-build_seatlock.bat
-```
-
-### 2. Start the Backend (Python)
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-### 3. Open the Frontend
-Simply open `frontend/index.html` in your browser.
-- **Green**: Available
-- **Orange**: Held (Real-time update)
-- **Red**: Sold (Real-time update)
-
-## ✨ Key Features
-
-- **Lock-Free Core**: Uses `std::atomic` and CAS loops for maximum throughput.
-- **Real-Time Sync**: WebSockets broadcast seat state changes instantly to all connected clients.
-- **Fine-Grained Locking**: Alternative implementation available for comparison.
-- **Auto-Expiry**: Background thread automatically releases held seats after timeout.
-
-## 📂 Project Structure
-
-```
-seatlock/
-├── src/                  # C++ Source
-│   ├── AtomicSeatManager.cpp
-│   └── ...
-├── include/              # C++ Headers
-├── backend/
-│   ├── main.py           # FastAPI + WebSockets
-│   └── requirements.txt
-├── frontend/             # Real-time UI
-│   ├── index.html
-│   ├── app.js
-│   └── styles.css
-├── build_seatlock.bat    # Automated Build Script
-└── README.md
-```
-
-## 🎓 Interview Talking Points
-
-1. **System Design**: "I extended the C++ engine with a **FastAPI gateway** to support web clients. I implemented **WebSockets** to solve the 'stale view' problem in ticketing, ensuring users see taken seats instantly."
-2. **Concurrency**: "The core engine handles 32M ops/sec using **lock-free** structures, while the frontend handles eventual consistency via WebSocket events."
-3. **Full Stack**: "Demonstrates integration from low-level C++ memory management up to high-level React UI state."
-
-## ☁️ Deployment
-
-- **Frontend**: Configured for Vercel (`vercel.json`)
-- **Backend**: Configured for Railway/Heroku (`Procfile`)
-
-## 📸 Gallery
-
-### Real-Time Frontend (React)
-![SeatLock Frontend](frontend/seatlock_frontend_preview.png)
-*Live seat updates with color-coded status (Available, Held, Sold)*
-
-### API Documentation (FastAPI/Swagger)
-![Swagger UI](frontend/seatlock_api_preview.png)
-*Interactive REST API testing interface*
-
-## 👤 Author
-
-**Kid of Dynamic**
-- GitHub: [@Raphasha27](https://github.com/Raphasha27)
-
+## ?? Roadmap
+- [x] Clear dead Vercel/Heroku links to prevent 404 routing errors.
+- [ ] Migrate CI/CD to local GitHub Actions.
+- [ ] Deploy isolated -lab environment.
