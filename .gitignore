@@ -51,3 +51,8 @@ Thumbs.db
 *.txt
 !requirements.txt
 !CMakeLists.txt
+
+build/
+*.exe
+*.pdb
+*.ilk
