@@ -16,8 +16,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt ruff mypy
-        continue-on-error: true
       - run: ruff check . --fix
-        continue-on-error: true
       - run: mypy . --ignore-missing-imports
-        continue-on-error: true
